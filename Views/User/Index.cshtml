@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+        <section class="profile">
+            <div class="your-profile">
+                <div class="avatar">
+                    <img src="~/img/avatars/4rCzntBc6setTIIWmEdqzzgiOFp2.jpg" alt="avatar" class="avatar">
+                </div>
+                <h1 class="profile">Eyder Huayta (NickName)</h1>
+                <h2 class="profile">@{
+                    }</h2>
+                <p class="profile">eyder@gmail.com</p>
+            </div>
+            <div class="my-friends">
+                <h1>Friends</h1>
+                <a class="friend" href="{% url 'viewUser' username=friend.username %}">
+                    <div class="friend">
+                        <div class="avatar-icon friend-icon">
+                            <img src="~/img/avatars/4rCzntBc6setTIIWmEdqzzgiOFp2.jpg" alt="avatar" class="avatar-icon">
+                        </div>
+                        <p>Yo xd</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <section class="posts">
+            @await Html.PartialAsync("_Posts")
+        </section>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/post/post.js"></script>

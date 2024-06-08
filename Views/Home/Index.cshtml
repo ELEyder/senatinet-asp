@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Senatinet";
+}
+
+    <section class="posts">
+        <form action="{% url 'postear' %}" class="postear" method="POST" enctype="multipart/form-data">
+            <input class="content" type="text" name="content" placeholder="¿En que piensas?" maxlength="1000" />
+            <div class="postear-option">
+                <label for="media" class="media">Select photo, gif or video</label>
+                <input type="file" name="media" class="media" id="media" accept=".jpg, .gif, .mp4" />
+                <button type="submit" class="postear">Post</button>
+            </div>
+        </form>
+        @await Html.PartialAsync("_Posts")
+    </section>
+    <section class="usuarios">
+        <div class="users">
+            <div class="usuario">
+                <a href="{% url 'viewUser' username=user.username %}">
+                    <div class="avatar-icon">
+                        <img src="~/img/avatars/t5Iuh7MYGGWO192I6DOhgKaS8HH3.jpg" alt="avatar" class="avatar-icon">
+                    </div>
+                </a>
+                <a href="{% url 'viewUser' username=user.username %}" class="usuario">Eyder Huayta</a>
+                <button class="btnAgregarAmigo {{ user.fStatus }}" state="{{ user.fStatus }}" username="{{ user.username }}" idUser="{{ user.id }}" onClick="sendRequest(this)">Add</button>
+            </div>
+        </div>
+    </section>

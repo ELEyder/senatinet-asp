@@ -1,0 +1,66 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<script src="~/js/post/like.js"></script>
+<script src="~/js/post/comment.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
+<script type="module" src="~/js/firebaseApp.js"></script>
+<script type="module" src="~/js/post/post.js"></script>
+
+    <div class="posts">
+        <div class="post-header">
+            <a href="{% url 'viewUser' username=post.authorUsername %}">
+                <div class="avatar-icon">
+                    <img src="~/img/avatars/t5Iuh7MYGGWO192I6DOhgKaS8HH3.jpg" alt="avatar" class="avatar-icon">
+                </div>
+            </a>
+            <div>
+                <a href="{% url 'viewUser' username=post.authorUsername %}" class="author-name">Eyder Huayta</a> <a href="">ha actualizado su foto de perfil</a>
+                <p class="post">May 24 2023</p>
+            </div>
+        </div>
+        <div class="post-main">
+            <p class="content">Content</p>
+        </div>
+        <div class="post-media">
+            <img src="~/img/avatars/wawnLpjZEUSmsFYmCox4HJOOEQp1.jpg" alt="" class="media">
+            @*                 <video controls class="media">
+            <source class="media" src="{{ post.urlMedia }}" type="video/mp4">
+            <source class="media" src="{{ post.urlMedia }}" type="video/avi">
+            Tu navegador no soporta la reproducción de videos.
+            </video> *@
+        </div>
+        <div class="post-options">
+            <a class="btn-post-option {{ post.likeStatus }}" id-post="{{ post.id }}" likes="{{ post.likes }}" onclick="like(this);">Likes: 0</a>
+            <a class="btn-post-option" idPost="{{ post.id }}" onclick="goComment(this);">Comment</a>
+            <a class="btn-post-option" href="#">Searchs: 0</a>
+        </div>
+        <div class="comment">
+            <div class="post-header">
+                <a href="{% url 'viewUser' username=comment.authorUsername %}">
+                    <div class="avatar-icon">
+                        <img src="~/img/avatars/4rCzntBc6setTIIWmEdqzzgiOFp2.jpg" alt="avatar" class="avatar-icon">
+                    </div>
+                </a>
+                <div class="comment-body">
+                    <a href="{% url 'viewUser' username=comment.authorUsername %}" class="author-name">Eyder Huayta 2</a>
+                    <p class="content">Content</p>
+                </div>
+            </div>
+        </div>
+        <form class="prepare-coment" action="{% url 'comment' %}" method="POST">
+            <input type="text" class="content" name="comment" id="{{ post.id }}" placeholder="Comentario" required>
+            <input type="hidden" name="idPost" value="{{ post.id }}">
+            <button type="submit" class="btn-comment">
+                <svg class="postear" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5003 12H5.41872M5.24634 12.7972L4.24158 15.7986C3.69128 17.4424 3.41613 18.2643 3.61359 18.7704C3.78506 19.21 4.15335 19.5432 4.6078 19.6701C5.13111 19.8161 5.92151 19.4604 7.50231 18.7491L17.6367 14.1886C19.1797 13.4942 19.9512 13.1471 20.1896 12.6648C20.3968 12.2458 20.3968 11.7541 20.1896 11.3351C19.9512 10.8529 19.1797 10.5057 17.6367 9.81135L7.48483 5.24303C5.90879 4.53382 5.12078 4.17921 4.59799 4.32468C4.14397 4.45101 3.77572 4.78336 3.60365 5.22209C3.40551 5.72728 3.67772 6.54741 4.22215 8.18767L5.24829 11.2793C5.34179 11.561 5.38855 11.7019 5.407 11.8459C5.42338 11.9738 5.42321 12.1032 5.40651 12.231C5.38768 12.375 5.34057 12.5157 5.24634 12.7972Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </form>
+    </div>
+    <audio id="like-mp3" src="~/audio/like.mp3"></audio>
+

@@ -1,0 +1,147 @@
+@import url("../root.css");
+header {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-items:  center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #d3d3d3;
+    z-index: 10; /* Z-index más bajo */
+}
+div.home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    overflow: hidden;
+}
+img.logo {
+    width: auto;
+    height: 50px;
+
+}
+input.logo {
+    width: 300px;
+    height: 40px;
+    margin: 0px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: var(--poppins);
+    background-color: var(--white-secondary);
+    border: none;
+    outline: none;
+}
+input.logo::placeholder {
+    color: var(--color-placeholder);
+    
+}
+
+div.info-user {
+    margin-left: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div.avatar-icon {
+    background-color: white;
+    width: 52px;
+    min-width: 52px;
+    height: 52px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+img.avatar-icon {
+    width: auto;
+    height: 52px;
+}
+
+.text-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+p.user {
+    color: black;
+    padding: 0;
+}
+p.name {
+    font-weight: 400;
+}
+div.state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.state-circle {
+    background-color: rgb(0, 255, 0);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px 0 0;
+}
+
+p.state {
+    font-weight: 100;
+}
+
+
+button.btn-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    font-family: var(--poppins);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+    user-select: none;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+button.btn-header:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+button.btn-header:hover .logout{
+    stroke: white;
+}
+
+svg.logout {
+    width: 25px;
+    height: 25px;
+    stroke: var(--color-primary);
+}
+
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+    /* background-color: #2c2c2c; */
+    background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    /* background-color: #9f9f9f; */
+    background-color: var(--color-secondary); /* Color del "pulgarcito" de la barra de desplazamiento */
+    border-radius: 5px; /* Bordes redondeados */
+}
