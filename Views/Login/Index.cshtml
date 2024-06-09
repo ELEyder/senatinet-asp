@@ -30,7 +30,7 @@
                 <div class="remember">
                     <label><input type="checkbox"> Remember me</label>
                 </div>
-            <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Login</button>
                 <div class="sign-link">
                     <p>Don't have an account? <a href="#" class="signUp-link">Sign Up</a></p>
                 </div>
@@ -41,32 +41,32 @@
         </div>
 
         <div class="from-wrapper sign-up">
-            <form action="{% url 'signup' %}" method="POST">
+            <form id="formSingUp" method="POST">
                 <h2>Sing Up</h2>
                 <div class="input-group">
-                    <input type="text" name="username" required>
+                    <input id="usernameSingUp" type="text" name="username" required>
                     <label for="username">Username*</label>
                 </div>
                 <div class="input-group-names">
                     <div class="input-group medium">
-                        <input type="text" name="firstname" required>
+                        <input id="firstNameSingUp" type="text" name="firstname" required>
                         <label for="firstname">First Name*</label>
                     </div>
                     <div class="input-group medium">
-                        <input type="text" name="lastname" required>
+                        <input id="lastNameSingUp" type="text" name="lastname" required>
                         <label for="lastname">Last Name*</label>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="email" required>
+                    <input id="emailSingUp" type="email" name="email" required>
                     <label for="email">Email*</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" name="password1" required>
+                    <input id="passwordSingUp1" type="password" name="password1" required>
                     <label for="password1">Password*</label>
                 </div>
                 <div class="input-group">
-                    <input type="password" name="password2" required>
+                    <input id="passwordSingUp2" type="password" name="password2" required>
                     <label for="password2">Password*</label>
                 </div>
                 <div class="remember">
@@ -96,5 +96,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth-compat.js"></script>
     <script type="module" src="~/js/firebaseApp.js"></script>
     <script type="module" src="~/js/login/login.js"></script>
+    <script type="module" src="~/js/login/singUp.js"></script>
 </body>
 </html>
