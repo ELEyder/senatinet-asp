@@ -28,6 +28,6 @@ document.getElementById('formLogin').addEventListener("submit", async function (
         this.submit();
     }
     else {
-        alert("Usuario o Contraseña Incorrecto.");
+        alert("Usuario o contraseña Incorrecto.");
     }
 })

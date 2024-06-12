@@ -2,6 +2,7 @@
 const signUpLink = document.querySelector('.signUp-link');
 const signInLink = document.querySelector('.signIn-link');
 const toggleLogin = document.querySelector('.toggle-login');
+const usernameInput = document.getElementById('usernameSingUp');
 const close = document.querySelector('.close');
 
 signUpLink.addEventListener('click', () => {

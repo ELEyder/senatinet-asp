@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\js\login\singUp.js">
+    <Content Update="wwwroot\js\login\signUp.js">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

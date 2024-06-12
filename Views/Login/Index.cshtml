@@ -30,7 +30,7 @@
                 <div class="remember">
                     <label><input type="checkbox"> Remember me</label>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn enabled">Login</button>
                 <div class="sign-link">
                     <p>Don't have an account? <a href="#" class="signUp-link">Sign Up</a></p>
                 </div>
@@ -41,38 +41,38 @@
         </div>
 
         <div class="from-wrapper sign-up">
-            <form id="formSingUp" method="POST">
-                <h2>Sing Up</h2>
+            <form id="formSignUp" method="POST" asp-action="Index" asp-controller="signUp">
+                <h2>Sign Up</h2>
                 <div class="input-group">
-                    <input id="usernameSingUp" type="text" name="username" required>
+                    <input id="usernameSignUp" type="text" name="username" required>
                     <label for="username">Username*</label>
                 </div>
                 <div class="input-group-names">
                     <div class="input-group medium">
-                        <input id="firstNameSingUp" type="text" name="firstname" required>
+                        <input id="firstNameSignUp" type="text" name="firstname" required>
                         <label for="firstname">First Name*</label>
                     </div>
                     <div class="input-group medium">
-                        <input id="lastNameSingUp" type="text" name="lastname" required>
+                        <input id="lastNameSignUp" type="text" name="lastname" required>
                         <label for="lastname">Last Name*</label>
                     </div>
                 </div>
                 <div class="input-group">
-                    <input id="emailSingUp" type="email" name="email" required>
+                    <input id="emailSignUp" type="email" name="email" required>
                     <label for="email">Email*</label>
                 </div>
                 <div class="input-group">
-                    <input id="passwordSingUp1" type="password" name="password1" required>
+                    <input id="passwordSignUp1" type="password" name="password1" required>
                     <label for="password1">Password*</label>
                 </div>
                 <div class="input-group">
-                    <input id="passwordSingUp2" type="password" name="password2" required>
+                    <input id="passwordSignUp2" type="password" name="password2" required>
                     <label for="password2">Password*</label>
                 </div>
                 <div class="remember">
                     <label><input type="checkbox" required> I agree to the terms & conditions</label>
                 </div>
-                <button type="submit" class="btn">Sign Up</button>
+                <button id="submitSignUp" type="submit" class="btn enabled">Sign Up</button>
                 <div class="sign-link">
                     <p>Don't have an account? <a href="#" class="signIn-link">Sign In</a></p>
                 </div>
@@ -94,8 +94,9 @@
     <script type="module" src="~/js/login/design.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
     <script type="module" src="~/js/firebaseApp.js"></script>
     <script type="module" src="~/js/login/login.js"></script>
-    <script type="module" src="~/js/login/singUp.js"></script>
+    <script type="module" src="~/js/login/signUp.js"></script>
 </body>
 </html>

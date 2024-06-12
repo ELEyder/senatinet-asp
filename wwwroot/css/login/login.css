@@ -217,17 +217,23 @@ h2 {
     left: 0;
     width: 100%;
     height: 40px;
-    background: var(--color-primary);
-    box-shadow: 0 5px 10px var(--color-primary);
     font-size: 16px;
-    color: #fff;
     font-weight: 500;
     cursor: pointer;
     border-radius: 5px;
     border: none;
     outline: none;
 }
-
+.enabled {
+    background: var(--color-primary);
+    box-shadow: 0 5px 10px var(--color-primary);
+    color: #fff;
+}
+.disabled {
+    background: var(--color-dark);
+    box-shadow: 0 5px 10px var(--color-dark);
+    color: darkgray;
+}
 .sign-link {
     font-size: 14px;
     text-align: center;

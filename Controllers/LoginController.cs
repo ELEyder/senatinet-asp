@@ -24,25 +24,13 @@ namespace senatinet_asp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string email, string password)
+        public async Task<IActionResult> Index(string email)
         {
             UserRecord userAuth = await _auth.GetUserByEmailAsync(email);
             DocumentReference userRef = _db.Collection("users").Document(userAuth.Uid);
             DocumentSnapshot snapshot = await userRef.GetSnapshotAsync();
 
             Dictionary<string, object> userData = snapshot.ToDictionary();
-            List<object> userDataChats = userData["chats"] as List<object>;
-            List<object> userDataStudies = userData["studies"] as List<object>;
-            List<object> userDataFriendRequestR = userData["friendRequestR"] as List<object>;
-            List<object> userDataFriendRequestS = userData["friendRequestS"] as List<object>;
-            List<object> userDataFriends = userData["friends"] as List<object>;
-            List<object> userDataNicknames = userData["nicknames"] as List<object>;
-            string[] chats = userDataChats.Select(x => x.ToString()).ToArray();
-            string[] studies = userDataStudies.Select(x => x.ToString()).ToArray();
-            string[] friendRequestR = userDataFriendRequestR.Select(x => x.ToString()).ToArray();
-            string[] friendRequestS = userDataFriendRequestS.Select(x => x.ToString()).ToArray();
-            string[] friends = userDataFriends.Select(x => x.ToString()).ToArray();
-            string[] nicknames = userDataNicknames.Select(x => x.ToString()).ToArray();
 
             UserModel user = new UserModel();
             user.Id = userAuth.Uid;
@@ -56,12 +44,25 @@ namespace senatinet_asp.Controllers
             user.Status = userData["status"].ToString();
             user.UrlAvatar = userData["urlAvatar"].ToString();
             user.Status = userData["status"].ToString();
-            user.Chats = chats;
-            user.Studies = studies;
-            user.FriendRequestR = friendRequestR;
-            user.FriendRequestS = friendRequestS;
-            user.Friends = friends;
-            user.Nicknames = nicknames;
+
+            List<object> chats = userData["chats"] as List<object>;
+            user.Chats = chats.Select(x => x.ToString()).ToArray();
+
+            List<object> studies = userData["studies"] as List<object>;
+            user.Studies = studies.Select(x => x.ToString()).ToArray();
+
+            List<object> friendRequestR = userData["friendRequestR"] as List<object>;
+            user.FriendRequestR = friendRequestR.Select(x => x.ToString()).ToArray();
+
+            List<object> friendRequestS = userData["friendRequestS"] as List<object>;
+            user.FriendRequestS = friendRequestS.Select(x => x.ToString()).ToArray();
+
+            List<object> friends = userData["friends"] as List<object>;
+            user.Friends = friends.Select(x => x.ToString()).ToArray();
+
+            List<object> nicknames = userData["nicknames"] as List<object>;
+            user.Nicknames = nicknames.Select(x => x.ToString()).ToArray();
+
             user.LastAccess = ((Timestamp)userData["lastAccess"]).ToDateTime();
             user.FirstRegistration = ((Timestamp)userData["firstRegistration"]).ToDateTime();
             
