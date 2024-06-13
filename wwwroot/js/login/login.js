@@ -1,14 +1,29 @@
 import { firebaseApp } from '../firebaseApp.js'
 const auth = firebaseApp.auth();
+const baseURL = window.location.origin;
 
 async function Login() {
     const email = document.getElementById('emailLogin').value;
     const password = document.getElementById('passwordLogin').value;
 
     try {
-        const userCredencial = await auth.signInWithEmailAndPassword(email, password)
-        const user = userCredencial.user;
-        alert(user.uid);
+        const userCredential = await auth.signInWithEmailAndPassword(email, password)
+        const idToken = await userCredential.user.getIdToken();
+        localStorage.setItem('firebaseToken', idToken);
+
+        // Enviar el ID token al backend
+        const response = await fetch(baseURL + '/login/authenticate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + idToken
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
         return true;
     } catch (error){
         const errorCode = error.code;
@@ -25,7 +40,7 @@ document.getElementById('formLogin').addEventListener("submit", async function (
     alert(request)
     if (request == true) {
         alert("Login realizado.");
-        this.submit();
+        window.location.replace(baseURL + '/home');
     }
     else {
         alert("Usuario o contraseña Incorrecto.");

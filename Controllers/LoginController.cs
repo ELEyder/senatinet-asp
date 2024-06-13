@@ -15,23 +15,26 @@ namespace senatinet_asp.Controllers
         {
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", "Config/fs_credencials.json");
             _db = FirestoreDb.Create("senatinet-asp");
-
             _auth = FirebaseAuth.DefaultInstance;
         }
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string email)
+        public async Task<IActionResult> Authenticate()
         {
-            UserRecord userAuth = await _auth.GetUserByEmailAsync(email);
-            DocumentReference userRef = _db.Collection("users").Document(userAuth.Uid);
+            string idToken = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
+            string uid = decodedToken.Uid;
+
+            DocumentReference userRef = _db.Collection("users").Document(uid);
             DocumentSnapshot snapshot = await userRef.GetSnapshotAsync();
 
             Dictionary<string, object> userData = snapshot.ToDictionary();
-            userData.Add("id", userAuth.Uid);
+            userData.Add("id", uid);
             UserModel user = new UserModel(userData);
             
             string userDataJson = JsonSerializer.Serialize(user);

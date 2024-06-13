@@ -17,7 +17,7 @@
     <div class="wrapper">
         <div class="from-wrapper sign-in">
             <a href="#" class="close"><i class="fa-solid fa-xmark"></i></a>
-            <form method="POST" id="formLogin">
+            <form method="POST" id="formLogin" asp-controller="Login" asp-action="Authenticate">
                 <h2>SENATINET</h2>
                 <div class="input-group">
                     <input id="emailLogin" type="email" name="email" required>
