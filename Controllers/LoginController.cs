@@ -31,40 +31,8 @@ namespace senatinet_asp.Controllers
             DocumentSnapshot snapshot = await userRef.GetSnapshotAsync();
 
             Dictionary<string, object> userData = snapshot.ToDictionary();
-
-            UserModel user = new UserModel();
-            user.Id = userAuth.Uid;
-            user.Username = userData["username"].ToString();
-            user.Email = userData["email"].ToString();
-            user.FirstName = userData["firstName"].ToString();
-            user.LastName = userData["lastName"].ToString();
-            user.PhoneNumber = userData["phoneNumber"].ToString();
-            user.Address = userData["address"].ToString();
-            user.Country = userData["country"].ToString();
-            user.Status = userData["status"].ToString();
-            user.UrlAvatar = userData["urlAvatar"].ToString();
-            user.Status = userData["status"].ToString();
-
-            List<object> chats = userData["chats"] as List<object>;
-            user.Chats = chats.Select(x => x.ToString()).ToArray();
-
-            List<object> studies = userData["studies"] as List<object>;
-            user.Studies = studies.Select(x => x.ToString()).ToArray();
-
-            List<object> friendRequestR = userData["friendRequestR"] as List<object>;
-            user.FriendRequestR = friendRequestR.Select(x => x.ToString()).ToArray();
-
-            List<object> friendRequestS = userData["friendRequestS"] as List<object>;
-            user.FriendRequestS = friendRequestS.Select(x => x.ToString()).ToArray();
-
-            List<object> friends = userData["friends"] as List<object>;
-            user.Friends = friends.Select(x => x.ToString()).ToArray();
-
-            List<object> nicknames = userData["nicknames"] as List<object>;
-            user.Nicknames = nicknames.Select(x => x.ToString()).ToArray();
-
-            user.LastAccess = ((Timestamp)userData["lastAccess"]).ToDateTime();
-            user.FirstRegistration = ((Timestamp)userData["firstRegistration"]).ToDateTime();
+            userData.Add("id", userAuth.Uid);
+            UserModel user = new UserModel(userData);
             
             string userDataJson = JsonSerializer.Serialize(user);
             

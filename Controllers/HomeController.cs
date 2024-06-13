@@ -11,10 +11,18 @@ namespace senatinet_asp.Controllers
     {
         public IActionResult Index()
         {
-            string userDataJson = HttpContext.Session.GetString("userDataJson");
-            UserModel user = JsonSerializer.Deserialize<UserModel>(userDataJson);
-            ViewBag.UserData = user;
-            return View();
+            string? userDataJson = HttpContext.Session.GetString("userDataJson");
+            if (userDataJson != null)
+            {
+                UserModel? user = JsonSerializer.Deserialize<UserModel>(userDataJson);
+                ViewBag.UserData = user;
+                return View();
+            }
+            else
+            {
+                ViewBag.UserData = new UserModel();
+                return View();
+            }
         }
 
         public IActionResult Privacy()

@@ -7,7 +7,11 @@ namespace senatinet_asp.Controllers
     [SessionCheck]
     public class ConfigurationController : Controller
     {
-        public ActionResult User()
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult YourData()
         {
             return View();
         }
