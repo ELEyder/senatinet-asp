@@ -7,8 +7,8 @@ namespace senatinet_asp.Attributes
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            var session = context.HttpContext.Session.GetString("userDataJson");
-            if (string.IsNullOrEmpty(session))
+            var token = context.HttpContext.Session.GetString("token");
+            if (string.IsNullOrEmpty(token))
             {
                 context.Result = new RedirectToActionResult("Index", "Login", null);
             }

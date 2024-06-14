@@ -128,7 +128,7 @@ button.active {
 
 .wrapper .from-wrapper.sign-up {
     transform: translateX(2000px);
-    transition-delay: 0x;
+    transition-delay: 0;
 }
 
 .wrapper.show-sign .from-wrapper.sign-up {

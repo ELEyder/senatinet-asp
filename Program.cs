@@ -1,7 +1,10 @@
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using senatinet_asp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<FirebaseService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

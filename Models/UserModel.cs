@@ -26,17 +26,17 @@ namespace senatinet_asp.Models
 
         public UserModel()
         {
-            this.Id = null;
-            this.Username = null;
-            this.Email = null;
-            this.FirstName = null;
-            this.LastName = null;
-            this.PhoneNumber = null;
-            this.Address = null;
-            this.Country = null;
-            this.Status = null;
-            this.UrlAvatar = null;
-            this.Status = null;
+            this.Id = "null";
+            this.Username = "null";
+            this.Email = "null";
+            this.FirstName = "null";
+            this.LastName = "null";
+            this.PhoneNumber = "null";
+            this.Address = "null";
+            this.Country = "null";
+            this.Status = "null";
+            this.UrlAvatar = "img/avatars/0.jpg";
+            this.Status = "null";
             this.Chats = new List<string?>();
             this.Studies = new List<string?>();
             this.Works = new List<string?>();
